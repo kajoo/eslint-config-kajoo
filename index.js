@@ -69,4 +69,41 @@ module.exports = {
       version: 'detect',
     },
   },
+  overrides: [
+    {
+      files: ['*.js'],
+      parser: 'babel-eslint',
+      plugins: ['flowtype'],
+      rules: {
+        'flowtype/no-weak-types': WARNING,
+        'flowtype/require-parameter-type': OFF,
+        'flowtype/require-return-type': [
+          OFF,
+          'always',
+          { annotateUndefined: 'never' },
+        ],
+        'flowtype/require-valid-file-annotation': ERROR,
+      },
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      parser: '@typescript-eslint/parser',
+      plugins: ['@typescript-eslint/eslint-plugin'],
+      rules: {
+        '@typescript-eslint/no-unused-vars': [
+          ERROR,
+          { argsIgnorePattern: '^_' },
+        ],
+        'no-dupe-class-members': OFF,
+        'no-unused-vars': OFF,
+      },
+    },
+    {
+      files: ['*.{spec,test}.{js,ts,tsx}', '**/__tests__/**/*.{js,ts,tsx}'],
+      env: {
+        jest: true,
+        'jest/globals': true,
+      },
+    },
+  ],
 };
