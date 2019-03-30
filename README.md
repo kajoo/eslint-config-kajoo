@@ -1,6 +1,7 @@
 # eslint-config-kajoo
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/kajoo/eslint-config-kajoo.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/kajoo/eslint-config/kajoo.svg?branch=master)](https://travis-ci.org/kajoo/eslint-config/kajoo)
 
 Kajoo eslint config utilizing Flow, Prettier and Jest support.
 
