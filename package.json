@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-kajoo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ESLint preset extending Babel, Flow, Prettier and Jest",
   "main": "index.js",
   "scripts": {
