@@ -17,13 +17,11 @@ module.exports = {
     browser: true,
     es6: true,
     node: true,
-    'react-native/react-native': true,
   },
   plugins: [
     'jest',
     'prettier',
     'react',
-    'react-native',
     'import',
   ],
   parserOptions: {
@@ -54,16 +52,11 @@ module.exports = {
     ],
     'react/prop-types': WARNING,
     'react/display-name': WARNING,
-    'react-native/no-unused-styles': ERROR,
-    'react-native/split-platform-components': OFF,
-    'react-native/no-inline-styles': WARNING,
-    'react-native/no-color-literals': WARNING,
-    'react-native/no-raw-text': ERROR,
   },
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.android.js', '.ios.js', '.native.js'],
+        extensions: ['.js'],
       },
     },
     react: {

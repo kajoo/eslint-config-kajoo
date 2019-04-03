@@ -5,6 +5,7 @@ const ERROR = 2;
 
 module.exports = {
   extends: [
+    // require.resolve('./react'),
     'eslint:recommended',
     'plugin:flowtype/recommended',
     'plugin:jest/recommended',
