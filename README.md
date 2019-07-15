@@ -39,7 +39,7 @@ Add to your eslint config (`.eslintrc`, or `eslintConfig` field in `package.json
 - `kajoo/vanilla`: Plain JS
 - `kajoo/react`: Plain JS + React
 - `kajoo/react-native`: Plain JS + React + React Native
-- `kajoo/typescript`: TypeScript (use in addition to any of the above)
+- `kajoo`: Plain JS + React + React Native
 
 ```json
 {
