@@ -36,10 +36,14 @@ yarn add --dev eslint eslint-config-kajoo
 ## Usage
 
 Add to your eslint config (`.eslintrc`, or `eslintConfig` field in `package.json`):
+- `kajoo/vanilla`: Plain JS
+- `kajoo/react`: Plain JS + React
+- `kajoo/react-native`: Plain JS + React + React Native
+- `kajoo/typescript`: TypeScript (use in addition to any of the above)
 
 ```json
 {
-    "extends": "eslint-config-kajoo"
+    "extends": "kajoo"
 }
 ```
 
@@ -47,7 +51,7 @@ Add to your eslint config (`.eslintrc`, or `eslintConfig` field in `package.json
 
 ```json
 {
-    "extends": "eslint-config-kajoo",
+    "extends": "kajoo",
     "rules": {
         "global-require": 0,
         "prefer-destructuring": 0
