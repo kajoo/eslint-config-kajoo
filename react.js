@@ -1,102 +1,59 @@
-const restrictedGlobals = require('eslint-restricted-globals');
+const extensions = require('./extensions');
+
 const OFF = 0;
 const WARNING = 1;
 const ERROR = 2;
 
 module.exports = {
   extends: [
-    'eslint:recommended',
-    'plugin:flowtype/recommended',
-    'plugin:jest/recommended',
+    require.resolve('./node.js'),
     'plugin:react/recommended',
-    'prettier',
-    'prettier/flowtype',
     'prettier/react',
   ],
-  env: {
-    browser: true,
-    es6: true,
-    node: true,
-  },
   plugins: [
-    'jest',
-    'prettier',
     'react',
-    'import',
+    'react-hooks',
   ],
   parserOptions: {
-    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
   },
   rules: {
-    'import/no-unresolved': ERROR,
-    'no-restricted-globals': [ERROR].concat(restrictedGlobals),
-    'prettier/prettier': [
-      ERROR,
-      {
-        singleQuote: true,
-        trailingComma: 'all',
-        endOfLine: 'lf',
-      },
-    ],
-    'import/no-extraneous-dependencies': [
-      ERROR,
-      {
-        devDependencies: [
-          '**/__tests__/**/*.[jt]s?(x)',
-          '**/?(*.)+(spec|test).[jt]s?(x)',
-        ],
-      },
-    ],
+    'react/display-name': OFF,
+    'react/no-multi-comp': [WARNING, { ignoreStateless: true }],
+    'react/no-unused-prop-types': OFF,
     'react/prop-types': WARNING,
-    'react/display-name': WARNING,
+    'react/require-default-props': OFF,
+    'react-hooks/rules-of-hooks': ERROR,
+    'react-hooks/exhaustive-deps': WARNING,
   },
   settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js'],
-      },
-    },
     react: {
       version: 'detect',
     },
   },
   overrides: [
     {
-      files: ['*.js'],
-      parser: 'babel-eslint',
-      plugins: ['flowtype'],
-      rules: {
-        'flowtype/no-weak-types': WARNING,
-        'flowtype/require-parameter-type': OFF,
-        'flowtype/require-return-type': [
-          OFF,
-          'always',
-          { annotateUndefined: 'never' },
-        ],
-        'flowtype/require-valid-file-annotation': ERROR,
+      files: ['*.js', '*.jsx'],
+      settings: {
+        'import/extensions': [...extensions.JS, ...extensions.JS_REACT_NATIVE],
+        'import/resolver': {
+          node: {
+            extensions: [...extensions.JS, ...extensions.JS_REACT_NATIVE],
+          },
+        },
       },
     },
     {
       files: ['*.ts', '*.tsx'],
-      parser: '@typescript-eslint/parser',
-      plugins: ['@typescript-eslint/eslint-plugin'],
-      rules: {
-        '@typescript-eslint/no-unused-vars': [
-          ERROR,
-          { argsIgnorePattern: '^_' },
-        ],
-        'no-dupe-class-members': OFF,
-        'no-unused-vars': OFF,
-      },
-    },
-    {
-      files: ['*.{spec,test}.{js,ts,tsx}', '**/__tests__/**/*.{js,ts,tsx}'],
-      env: {
-        jest: true,
-        'jest/globals': true,
+      settings: {
+        'import/extensions': extensions.ALL,
+        'import/resolver': {
+          node: {
+            extensions: extensions.ALL,
+          },
+        },
       },
     },
   ],
